@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <style>
+        .message {
+            display: none;
+            color: red;
+            font-weight: bold;
+        }
+        .success-message {
+            color: green;
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const loginForm = document.getElementById('loginForm');
+            const errorMessage = document.getElementById('errorMessage');
+            const successMessage = document.getElementById('successMessage');
+
+            loginForm.addEventListener('submit', function (e) {
+                e.preventDefault();
+
+                const username = document.getElementById('username').value;
+                const password = document.getElementById('password').value;
+
+                // Reset pesan sebelumnya
+                errorMessage.style.display = 'none';
+                successMessage.style.display = 'none';
+
+                // Logika validasi login
+                if (username === 'testuser' && password === 'password123') {
+                    successMessage.style.display = 'block';
+                } else {
+                    errorMessage.style.display = 'block';
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <h2>Login</h2>
+    <form id="loginForm">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username">
+        <br><br>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password">
+        <br><br>
+        <button type="submit" id="loginButton">Login</button>
+    </form>
+    
+    <!-- Pesan Kesalahan dan Sukses -->
+    <div id="errorMessage" class="message">Login gagal! Username atau password salah.</div>
+    <div id="successMessage" class="message success-message">Login berhasil!</div>
+</body>
+</html>
